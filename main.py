@@ -14,6 +14,11 @@ import os
 
 WORD = "feral"
 
+# The competition asks for exactly one word: a single alphabetic
+# token, 1-30 characters. Fail loudly rather than emit a bad entry.
+if not (1 <= len(WORD) <= 30 and WORD.isalpha()):
+    raise ValueError(f"WORD must be a single alphabetic word of 1-30 chars, got {WORD!r}")
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
